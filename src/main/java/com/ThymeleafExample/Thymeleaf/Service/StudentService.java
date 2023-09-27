@@ -35,6 +35,13 @@ public class StudentService  {
 
 
     public Student updateStudent(Student student) {
+        Student existingStudent = getStudentById( student.getId());
+        existingStudent.setId(student.getId());
+        existingStudent.setFirstName(student.getFirstName());
+        existingStudent.setLastName(student.getLastName());
+        existingStudent.setEmail(student.getEmail());
+        existingStudent.setPhoneNumber(student.getPhoneNumber());
+        existingStudent.setStudentStatus(student.getStudentStatus());
         return studentRepository.save(student);
     }
 

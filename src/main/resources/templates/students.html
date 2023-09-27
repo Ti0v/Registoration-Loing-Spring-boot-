@@ -44,9 +44,11 @@
     <table class = "table table-striped table-bordered">
         <thead class = "table-dark">
         <tr>
-            <th> Student First Name</th>
-            <th> Student Last Name</th>
-            <th> Student Email </th>
+            <th>  First Name</th>
+            <th>  Last Name</th>
+            <th>  Email </th>
+            <th>  Phone Number </th>
+            <th>  Status </th>
             <th> Actions </th>
         </tr>
         </thead>
@@ -56,6 +58,8 @@
             <td th:text = "${student.firstName}"></td>
             <td th:text = "${student.lastName}"></td>
             <td th:text = "${student.email}"></td>
+            <td th:text = "${student.phoneNumber}"></td>
+            <td th:text = "${student.studentStatus}"></td>
             <td>
                 <a th:href = "@{/students/edit/{id}(id=${student.id})}"
                    class = "btn btn-primary">Update</a>

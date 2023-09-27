@@ -36,43 +36,59 @@
             <div class = "card-body">
                 <form th:action="@{/students}" th:object = "${student}" method="POST">
                     <div class ="form-group">
-                        <label> Student First Name </label>
-                        <input
+                        <label for="firstname"> Student First Name </label>
+                        <input id="firstname"
                                 type = "text"
                                 name = "firstName"
                                 th:field = "*{firstName}"
                                 class = "form-control"
-                                placeholder="Enter Student First Name"
+                                placeholder="Enter Student First Name" required
                         />
                     </div>
 
                     <div class ="form-group">
-                        <label> Student Last Name </label>
-                        <input
+                        <label for="last"> Student Last Name </label>
+                        <input id="last"
                                 type = "text"
                                 name = "lastName"
                                 th:field = "*{lastName}"
                                 class = "form-control"
-                                placeholder="Enter Student Last Name"
+                                placeholder="Enter Student Last Name" required
                         />
                     </div>
 
                     <div class ="form-group">
-                        <label> Student Email </label>
-                        <input
+                        <label for="email"> Student Email </label>
+                        <input id="email"
                                 type = "text"
                                 name = "email"
                                 th:field = "*{email}"
                                 class = "form-control"
-                                placeholder="Enter Student Email"
+                                placeholder="Enter Student Email" required
                         />
                     </div>
+                    <div class ="form-group">
+                        <label for="Phone">  Phone Number </label>
+                        <input id="Phone"
+                               type = "text"
+                               name = "email"
+                               th:field = "*{phoneNumber}"
+                               class = "form-control"
+                               placeholder="Enter Student Phone Number" required
+                        />
+                    </div>
+                    <select class="form-select form-select-lg mb-2" aria-label="Large select example" th:field="*{studentStatus}">
+                        <option th:each="status : ${T(com.ThymeleafExample.Thymeleaf.Entity.StudentStatus).values()}"
+                                th:value="${status}" th:text="${status}"></option>
+
+                    </select><br>
 
                     <div class = "box-footer">
                         <button type="submit" class = "btn btn-primary">
                             Submit
                         </button>
                     </div>
+
                 </form>
 
             </div>

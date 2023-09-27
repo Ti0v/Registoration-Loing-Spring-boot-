@@ -27,7 +27,7 @@ public class StudentController {
     @GetMapping("/students/new")
     public String createStudentForm(Model model) {
 
-        // create student object to hold student form data
+
         Student student = new Student();
         model.addAttribute("student", student);
         return "create_student";
@@ -35,7 +35,7 @@ public class StudentController {
     }
 
     @PostMapping("/students")
-    public String saveStudent(@ModelAttribute("student") Student student) {
+    public String saveStudent( @ModelAttribute Student student) {
         studentService.saveStudent(student);
         return "redirect:/students";
     }
@@ -46,18 +46,11 @@ public class StudentController {
         return "edit_student";
     }
 
+
     @PostMapping("/students/{id}")
-    public String updateStudent(@PathVariable Long id,@ModelAttribute("student") Student student, Model model) {
+    public String updateStudent(@PathVariable Long id,@ModelAttribute("student") Student student) {
 
-        // get student from database by id
-        Student existingStudent = studentService.getStudentById(id);
-        existingStudent.setId(id);
-        existingStudent.setFirstName(student.getFirstName());
-        existingStudent.setLastName(student.getLastName());
-        existingStudent.setEmail(student.getEmail());
-
-        // save updated student object
-        studentService.updateStudent(existingStudent);
+        studentService.updateStudent(student);
         return "redirect:/students";
     }
 
